@@ -171,10 +171,13 @@ df_vencedores = pd.DataFrame(vencedores, columns=colunas);
 df_perdedores = pd.DataFrame(perdedores, columns=colunas);
 df_vencedores['Classe'] = 1 # VENCEDOR
 df_perdedores['Classe'] = 0 # NÃO VENCEDOR
-base = df_vencedores.append(df_perdedores);
+base = df_vencedores.append(df_perdedores, ignore_index=True);
+base.reset_index();
 base.index.name = "FilmeId"
 base.head()
 
 # In[5]
 base.to_csv(OUTPUT_FILE, sep=";", decimal=",");
 
+
+#%%
